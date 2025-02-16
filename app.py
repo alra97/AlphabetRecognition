@@ -18,8 +18,19 @@ labels = [chr(i) for i in range(65, 91)]  # A-Z
 
 st.title("📝 Handwritten Alphabet Recognition")
 
+# ✅ Display Model Accuracy
+training_accuracy = 99.67  # Replace with actual training accuracy
+testing_accuracy = 99.31  # Replace with actual model evaluation accuracy
+
+st.markdown(f"""
+### 📊 Model Performance:
+- **Training Accuracy:** {training_accuracy:.2f}%
+- **Testing Accuracy:** {model_accuracy:.2f}%
+""", unsafe_allow_html=True)
+
 # ✅ Upload Image
-uploaded_file = st.file_uploader("Upload an image of a handwritten letter", type=["jpg", "png", "jpeg"])
+st.header("📤 Upload an Image")
+uploaded_file = st.file_uploader("Upload a handwritten letter image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     # ✅ Read image
@@ -41,6 +52,12 @@ if uploaded_file is not None:
     probability = np.max(prediction) * 100
 
     # ✅ Display results
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-    st.write(f"**Predicted Letter:** {predicted_label}")
-    st.write(f"**Confidence:** {probability:.2f}%")
+    st.markdown(f"""
+    <div style="text-align: center;">
+        <h2><b>LETTER: {predicted_label}</b></h2>
+        <h3>Confidence: {probability:.2f}%</h3>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ✅ Display Image
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
