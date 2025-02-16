@@ -25,7 +25,7 @@ testing_accuracy = 99.31  # Replace with actual model evaluation accuracy
 st.markdown(f"""
 ### 📊 Model Performance:
 - **Training Accuracy:** {training_accuracy:.2f}%
-- **Testing Accuracy:** {model_accuracy:.2f}%
+- **Testing Accuracy:** {testing_accuracy:.2f}%
 """, unsafe_allow_html=True)
 
 # ✅ Upload Image
